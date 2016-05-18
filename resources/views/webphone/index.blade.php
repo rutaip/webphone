@@ -1061,7 +1061,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label style="height: 100%">Password: {{ $extension->password }}</label>
+                        <label style="height: 100%">Password: </label>
                     </td>
                     <td>
                         <input type="password" style="width: 100%; height: 100%" id="txtPassword" value="{{ $extension->password }}" />
