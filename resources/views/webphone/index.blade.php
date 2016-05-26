@@ -343,7 +343,7 @@
                             //websocket_proxy_url: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.websocket_server_url') : null),
                             websocket_proxy_url: '{!! $extension->instance->websocket_proxy_url !!}',
                             outbound_proxy_url: '{!! $extension->instance->outbound_proxy !!}',
-                            ice_servers: '{!! $extension->instance->ice_servers !!}',
+                            ice_servers: '',
                             enable_rtcweb_breaker: {!! $extension->instance->rtcweb_breaker !!},
                             events_listener: { events: '*', listener: onSipEventStack },
                             enable_early_ims: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.disable_early_ims') != "true" : true), // Must be true unless you're using a real IMS network
