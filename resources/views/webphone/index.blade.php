@@ -282,7 +282,7 @@
             }
         }
         function loadCredentials() {
-            if (window.localStorage) {
+           /* if (window.localStorage) {
                 // IE retuns 'null' if not defined
                 var s_value;
                 if ((s_value = window.localStorage.getItem('org.doubango.identity.display_name'))) txtDisplayName.value = s_value;
@@ -291,14 +291,14 @@
                 if ((s_value = window.localStorage.getItem('org.doubango.identity.password'))) txtPassword.value = s_value;
                 if ((s_value = window.localStorage.getItem('org.doubango.identity.realm'))) txtRealm.value = s_value;
             }
-            else {
-                //txtDisplayName.value = "005";
-                //txtPrivateIdentity.value = "005";
-                //txtPublicIdentity.value = "sip:005@sip2sip.info";
-                //txtPassword.value = "005";
-                //txtRealm.value = "sip2sip.info";
+            else {*/
+                txtDisplayName.value = "{{ $user->name }} {{ $user->lastname }}";
+                txtPrivateIdentity.value = "{{ $extension->extension }}";
+                txtPublicIdentity.value = "sip:{{ $extension->extension }}{!! '@' !!}{{ $extension->pbx_url }}";
+                txtPassword.value = "{{ $extension->password }}";
+                txtRealm.value = "{{ $extension->pbx_url }}";
                 //txtPhoneNumber.value = "701020";
-            }
+            //}
         };
         function saveCredentials() {
             if (window.localStorage) {
