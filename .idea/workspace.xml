@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d31502ff-8a14-418d-85c8-99f65a5460fd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/template.blade.php" afterPath="$PROJECT_DIR$/resources/views/template.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/webphone/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/webphone/index.blade.php" />
     </list>
     <ignored path="phone.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,8 +52,8 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/webphone/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19091">
-              <caret line="1153" column="35" selection-start-line="1153" selection-start-column="35" selection-end-line="1153" selection-end-column="35" />
+            <state relative-caret-position="306">
+              <caret line="288" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="1248" selection-end-column="5" />
               <folding>
                 <element signature="e#50953#50973#0#HTML" expanded="true" />
                 <element signature="e#51131#51150#0#HTML" expanded="true" />
@@ -593,12 +591,12 @@
       <workItem from="1463499155845" duration="33749000" />
       <workItem from="1464132224137" duration="1459000" />
       <workItem from="1464287138339" duration="297000" />
-      <workItem from="1464287522069" duration="10406000" />
+      <workItem from="1464287522069" duration="10551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75140000" />
+    <option name="totallyTimeSpent" value="75285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1357" y="1" width="1936" height="1055" extended-state="0" />
@@ -989,8 +987,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/webphone/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19091">
-          <caret line="1153" column="35" selection-start-line="1153" selection-start-column="35" selection-end-line="1153" selection-end-column="35" />
+        <state relative-caret-position="306">
+          <caret line="288" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="1248" selection-end-column="5" />
           <folding>
             <element signature="e#50953#50973#0#HTML" expanded="true" />
             <element signature="e#51131#51150#0#HTML" expanded="true" />
