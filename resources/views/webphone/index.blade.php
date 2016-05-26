@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<!--
-* Copyright (C) 2012-2016 Doubango Telecom <http://www.doubango.org>
-* License: BSD
-* This file is part of Open Source sipML5 solution <http://www.sipml5.org>
--->
-<html>
-<!-- head -->
-<head>
-    <meta charset="utf-8" />
-    <title>Rutaip Webphone WebRTC</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Keywords" content="rutaip, sipML5, VoIP, HTML5, WebRTC, RTCWeb, SIP, IMS, Video chat, VP8, live demo " />
-    <meta name="Description" content="Rutaip HTML5 SIP client using WebRTC framework" />
-    <meta name="author" content="Rutaip" />
-
+@extends('template')
     <!-- SIPML5 API:
     DEBUG VERSION: 'SIPml-api.js'
     RELEASE VERSION: 'release/SIPml-api.js'
     -->
+
+@section('content')
     {!! Html::script('assets/js/SIPml-api.js?svn=250') !!}
 
     <!-- Styles -->
     {!! Html::style('assets/css/bootstrap.css') !!}
     <style type="text/css">
-        body {
+      /*  body {
             padding-top: 80px;
             padding-bottom: 40px;
         }
@@ -43,7 +30,7 @@
         }
         .normal-screen {
             position: relative;
-        }
+        }*/
         .call-options {
             padding: 5px;
             background-color: #f0f0f0;
@@ -997,24 +984,8 @@
             }
         }
     </script>
-</head>
-<body style="cursor:wait">
-<div class="navbar navbar-fixed-top">
-    <div id="divNavbarInner" class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-            </a>
-            <img alt="sipML5" class="brand" src="./images/sipml-34x39.png" />
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li class="active"><a href="index.htmlsvn=236">Home</a></li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </div>
-</div>
+
+
 <div class="container">
     <div class="row-fluid">
         <div class="span4 well">
@@ -1077,9 +1048,9 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
-                        <input type="button" class="btn btn-success" id="btnRegister" value="LogIn" disabled onclick='sipRegister();' />
+                       <!-- <input type="button" class="btn btn-success" id="btnRegister" value="LogIn" disabled onclick='sipRegister();' />
                         &nbsp;
-                        <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" disabled onclick='sipUnRegister();' />
+                        <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" disabled onclick='sipUnRegister();' /> -->
                     </td>
                 </tr>
                 <tr>
@@ -1175,6 +1146,38 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <caption>User Details</caption>
+                <thead>
+                <tr class="active">
+                    <th>Field</th>
+                    <th>Content</th>
+                </tr> </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td>{{ $user->name }} {{ $user->lastname }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>{{ $user->email }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Options</th>
+                    <td><input type="button" class="btn btn-success" id="btnRegister" value="LogIn" disabled onclick='sipRegister();' />
+                        &nbsp;
+                        <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" disabled onclick='sipUnRegister();' />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+
     <br />
     <footer>
 
@@ -1243,6 +1246,4 @@
 <audio id="ringtone" loop src="assets/sounds/ringtone.wav"> </audio>
 <audio id="ringbacktone" loop src="assets/sounds/ringbacktone.wav"> </audio>
 <audio id="dtmfTone" src="assets/sounds/dtmf.wav"> </audio>
-
-</body>
-</html>
+@stop

@@ -22,9 +22,11 @@
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9] -->
     {!! Html::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') !!}
     {!! Html::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}
+    {!! Html::script('assets/js/SIPml-api.js?svn=250') !!}
+
     <![endif]-->
 
 </head>
@@ -87,6 +89,23 @@
 {!! Html::script('assets/js/ie10-viewport-bug-workaround.js') !!}
         <!-- Custom scripts -->
 {!! Html::script('assets/js/custom.js') !!}
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+{!! Html::script('assets/js/jquery.js') !!}
+{!! Html::script('assets/js/bootstrap-transition.js') !!}
+{!! Html::script('assets/js/bootstrap-alert.js') !!}
+{!! Html::script('assets/js/bootstrap-modal.js') !!}
+{!! Html::script('assets/js/bootstrap-dropdown.js') !!}
+{!! Html::script('assets/js/bootstrap-scrollspy.js') !!}
+{!! Html::script('assets/js/bootstrap-tab.js') !!}
+{!! Html::script('assets/js/bootstrap-tooltip.js') !!}
+{!! Html::script('assets/js/bootstrap-popover.js') !!}
+{!! Html::script('assets/js/bootstrap-button.js') !!}
+{!! Html::script('assets/js/bootstrap-collapse.js') !!}
+{!! Html::script('assets/js/bootstrap-carousel.js') !!}
+{!! Html::script('assets/js/bootstrap-typeahead.js') !!}
 
 @yield('footer')
 </body>
