@@ -60,6 +60,9 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                @if (Auth::check())
+                <li class="navbar-text">Hello, {{ Auth::user()->name }}</li>
+                @endif
                 <li>{!! Html::link('logout', 'Logout') !!}</li>
             </ul>
         </div><!--/.nav-collapse -->
