@@ -13,7 +13,7 @@ window.performance.now = window.performance.now || (function () {
             return Date.now() - a
         }
     })();
-window.URL = window.URL || window.webkitURL;
+window.URL = window.URL || window.webURL;
 function trace(a) {
     if (a[a.length - 1] == "\n") {
         a = a.substring(0, a.length - 1)

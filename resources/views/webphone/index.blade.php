@@ -5,18 +5,6 @@
     -->
 
 @section('content')
-
-
-    <!-- Styles -->
-
-
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png" />
-
     <!-- Javascript code -->
     {!! Html::script('assets/js/SIPml-api.js?svn=250') !!}
     <script type="text/javascript">
@@ -1050,27 +1038,9 @@
     <li><a href="#" onclick='uiDisableCallOptions();'><b>Disable these options</b></a></li>
 </ul>
 
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-{!! Html::script('assets/js/jquery.js') !!}
-{!! Html::script('assets/js/bootstrap-transition.js') !!}
-{!! Html::script('assets/js/bootstrap-alert.js') !!}
-{!! Html::script('assets/js/bootstrap-modal.js') !!}
-{!! Html::script('assets/js/bootstrap-dropdown.js') !!}
-{!! Html::script('assets/js/bootstrap-scrollspy.js') !!}
-{!! Html::script('assets/js/bootstrap-tab.js') !!}
-{!! Html::script('assets/js/bootstrap-tooltip.js') !!}
-{!! Html::script('assets/js/bootstrap-popover.js') !!}
-{!! Html::script('assets/js/bootstrap-button.js') !!}
-{!! Html::script('assets/js/bootstrap-collapse.js') !!}
-{!! Html::script('assets/js/bootstrap-carousel.js') !!}
-{!! Html::script('assets/js/bootstrap-typeahead.js') !!}
-
-
 <!-- Audios -->
 <audio id="audio_remote" autoplay="autoplay"> </audio>
-<audio id="ringtone" loop src="assets/sounds/ringtone.wav"> </audio>
-<audio id="ringbacktone" loop src="assets/sounds/ringbacktone.wav"> </audio>
-<audio id="dtmfTone" src="assets/sounds/dtmf.wav"> </audio>
+<audio id="ringtone" loop src="../../assets/sounds/ringtone.wav"> </audio>
+<audio id="ringbacktone" loop src="../../assets/sounds/ringbacktone.wav"> </audio>
+<audio id="dtmfTone" src="../../assets/sounds/dtmf.wav"> </audio>
 @stop
