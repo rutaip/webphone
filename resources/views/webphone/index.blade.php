@@ -132,6 +132,7 @@
         };
         window.onload = function () {
             window.console && window.console.info && window.console.info("location=" + window.location);
+            window.localStorage.setItem('org.doubango.expert.disable_callbtn_options', 'true');
             videoLocal = document.getElementById("video_local");
             videoRemote = document.getElementById("video_remote");
             audioRemote = document.getElementById("audio_remote");
