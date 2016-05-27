@@ -1089,7 +1089,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div id="tdVideo" class="col-md-12">
                 <div id="divVideo" class='div-video'>
                     <div id="divVideoRemote" style=' height:100%; width:100%; z-index: auto; opacity: 1'>
                         <video class="video" width="100%" height="100%" id="video_remote" autoplay="autoplay" style="opacity: 0;
