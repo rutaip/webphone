@@ -11,11 +11,10 @@ use App\Http\Requests\ExtensionRequest;
 
 class ExtensionsController extends Controller
 {
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-        parent::__construct();
-    }*/
+    }
 
     public function index()
     {

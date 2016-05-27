@@ -9,6 +9,12 @@ use App\Http\Requests\InstanceRequest;
 
 class InstancesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $instances=Instance::latest()->get();
