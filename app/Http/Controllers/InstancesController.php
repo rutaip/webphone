@@ -17,29 +17,21 @@ class InstancesController extends Controller
     
     public function index()
     {
+        $this->authorize('admin');
         $instances=Instance::latest()->get();
-
-        /*if  (Gate::denies('integrations', $integrations)) {
-
-            abort(403, 'Sorry, not allowed');
-        }*/
 
         return view('instances.index', compact('instances'));
     }
 
     public function create()
     {
-
+        $this->authorize('admin');
         return view('instances.create');
     }
 
     public function store(InstanceRequest $request)
     {
-        /*
-        if  (Gate::denies('create', $request)) {
-
-            abort(403, 'Sorry, not allowed');
-        }*/
+        $this->authorize('admin');
 
         Instance::create($request->all());
         flash()->success('Successfully created');
@@ -47,12 +39,14 @@ class InstancesController extends Controller
     }
     
     public function show($id){
+        $this->authorize('admin');
         $instance = Instance::findOrFail($id);
         return view('instances.show', compact('instance'));
     }
 
     public function edit($id)
     {
+        $this->authorize('admin');
         $instance = Instance::findOrFail($id);
 
         return view('instances.edit', compact('instance'));
@@ -60,25 +54,21 @@ class InstancesController extends Controller
 
     public function update(InstanceRequest $request, $id)
     {
+        $this->authorize('admin');
         $instance = Instance::findOrFail($id);
-/*
-        if  (Gate::denies('edit', $region)) {
-
-            abort(403, 'Sorry, not allowed');
-        }
-*/
 
         $instance->update($request->all());
-  //      session()->flash('flash_message', 'Record successfully updated!');
+        flash()->success('Successfully updated');
         return redirect('instances');
     }
 
     public function destroy($id)
     {
+        $this->authorize('admin');
         $instance = Instance::findOrFail($id);
 
         $instance->delete();
-        //session()->flash('flash_message', 'Record successfully deleted!');
+        flash()->success('Successfully deleted');
         return redirect('instances');
     }
 }

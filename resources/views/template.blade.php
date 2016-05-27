@@ -47,6 +47,7 @@
                 <li class="active">{!! Html::link('home', 'Home') !!}</li>
                 <!--<li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>-->
+                @can('admin')
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin menu <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -58,6 +59,7 @@
                         <li><a href="#">One more separated link</a></li>-->
                     </ul>
                 </li>
+                @endcan
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
@@ -84,7 +86,7 @@
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         var referrer = (document.referrer) ? encodeURIComponent(document.referrer.substr(document.referrer.indexOf('://')+1)) : '';
         var location  = (document.location) ? encodeURIComponent(window.location.href.substring(window.location.protocol.length)) : '';
-        po.src = 'http://chatsoporte.rutaip.net/index.php/esp/chat/getstatus/(click)/internal/(position)/bottom_right/(ma)/br/(top)/350/(units)/pixels/(leaveamessage)/true/(department)/1?r='+referrer+'&l='+location;
+        po.src = 'https://chatsoporte.rutaip.net/index.php/esp/chat/getstatus/(click)/internal/(position)/bottom_right/(ma)/br/(top)/350/(units)/pixels/(leaveamessage)/true/(department)/1?r='+referrer+'&l='+location;
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
     })();
 </script>

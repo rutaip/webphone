@@ -18,6 +18,9 @@ class ExtensionsController extends Controller
 
     public function index()
     {
+
+        $this->authorize('admin');
+
         $extensions=Extension::latest()->get();
 
         /*if  (Gate::denies('integrations', $integrations)) {
@@ -30,6 +33,7 @@ class ExtensionsController extends Controller
 
     public function create()
     {
+        $this->authorize('admin');
         $instances=Instance::orderBy('id', 'asc')->lists('name','id');
         $user=User::orderBy('id', 'asc')->lists('name', 'id');
 
@@ -38,12 +42,7 @@ class ExtensionsController extends Controller
 
     public function store(ExtensionRequest $request)
     {
-        /*
-        if  (Gate::denies('create', $request)) {
-
-            abort(403, 'Sorry, not allowed');
-        }*/
-
+        $this->authorize('admin');
         Extension::create($request->all());
 
         flash()->success('Successfully created');
@@ -51,12 +50,14 @@ class ExtensionsController extends Controller
     }
 
     public function show($id){
+        $this->authorize('admin');
         $extension = Extension::findOrFail($id);
         return view('extensions.show', compact('extension'));
     }
 
     public function edit($id)
     {
+        $this->authorize('admin');
         $extension = Extension::findOrFail($id);
         $instances=Instance::orderBy('id', 'asc')->lists('name','id');
         $user=User::orderBy('id', 'asc')->lists('name', 'id');
@@ -66,13 +67,9 @@ class ExtensionsController extends Controller
 
     public function update(ExtensionRequest $request, $id)
     {
+        $this->authorize('admin');
         $extension = Extension::findOrFail($id);
-        /*
-                if  (Gate::denies('edit', $region)) {
-        
-                    abort(403, 'Sorry, not allowed');
-                }
-        */
+
 
         $extension->update($request->all());
         flash()->success('Successfully updated');
@@ -81,6 +78,7 @@ class ExtensionsController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('admin');
         $extension = Extension::findOrFail($id);
 
         $extension->delete();
