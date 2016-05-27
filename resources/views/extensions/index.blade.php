@@ -1,13 +1,6 @@
 @extends('template')
 
-@section('page')
-    Extensions
-@stop
-
 @section('content')
-
-    {!! Form::open(array('url' => 'projects')) !!}
-
     <div class="row">
         <div class="col-md-12">
             <table class="table table-bordered">
@@ -32,13 +25,8 @@
                         <td>{{ $extension->instance->name }}</td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
         </div>
     </div>
-
-    <br>
-
-
 @stop

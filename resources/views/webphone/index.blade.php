@@ -9,101 +9,8 @@
 
     <!-- Styles -->
 
-    <style type="text/css">
-        body {
-            padding-top: 80px;
-            padding-bottom: 40px;
-        }
-        .navbar-inner-red {
-            background-color: #600000;
-            background-image: none;
-            background-repeat: no-repeat;
-            filter: none;
-        }
-        .full-screen {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .normal-screen {
-            position: relative;
-        }
-        .call-options {
-            padding: 5px;
-            background-color: #f0f0f0;
-            border: 1px solid #eee;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            -webkit-border-radius: 4px;
-            -moz-border-radius: 4px;
-            border-radius: 4px;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-            -webkit-transition-property: opacity;
-            -moz-transition-property: opacity;
-            -o-transition-property: opacity;
-            -webkit-transition-duration: 2s;
-            -moz-transition-duration: 2s;
-            -o-transition-duration: 2s;
-        }
-        .tab-video,
-        .div-video {
-            width: 100%;
-            height: 0px;
-            -webkit-transition-property: height;
-            -moz-transition-property: height;
-            -o-transition-property: height;
-            -webkit-transition-duration: 2s;
-            -moz-transition-duration: 2s;
-            -o-transition-duration: 2s;
-        }
-        .label-align {
-            display: block;
-            padding-left: 15px;
-            text-indent: -15px;
-        }
-        .input-align {
-            width: 13px;
-            height: 13px;
-            padding: 0;
-            margin: 0;
-            vertical-align: bottom;
-            position: relative;
-            top: -1px;
-            *overflow: hidden;
-        }
-        .glass-panel {
-            z-index: 99;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            top: 0;
-            left: 0;
-            opacity: 0.8;
-            background-color: Gray;
-        }
-        .div-keypad {
-            z-index: 100;
-            position: fixed;
-            -moz-transition-property: left top;
-            -o-transition-property: left top;
-            -webkit-transition-duration: 2s;
-            -moz-transition-duration: 2s;
-            -o-transition-duration: 2s;
-        }
-        .previewvideo {
-            position: absolute;
-            width: 88px;
-            height: 72px;
-            margin-top: -42px;
-        }
-    </style>
-    {!! Html::style('assets/css/bootstrap-responsive.css') !!}
+
+
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png" />
@@ -111,6 +18,7 @@
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png" />
 
     <!-- Javascript code -->
+    {!! Html::script('assets/js/SIPml-api.js?svn=250') !!}
     <script type="text/javascript">
         // to avoid caching
         //if (window.location.href.indexOf("svn=") == -1) {
@@ -1119,29 +1027,6 @@
                 </div>
         </div>
     </div>
-
-    <br />
-    <footer>
-
-        <p>
-            &copy; Rutaip 2016 <br />
-            <i>Soluciones integrales VoIP</i>
-        </p>
-        <!-- Creates all ATL/COM objects right now
-            Will open confirmation dialogs if not already done
-        -->
-        <!--object id="fakeVideoDisplay" classid="clsid:5C2C407B-09D9-449B-BB83-C39B7802A684" style="visibility:hidden;"> </object-->
-        <!--object id="fakeLooper" classid="clsid:7082C446-54A8-4280-A18D-54143846211A" style="visibility:visible; width:0px; height:0px"> </object-->
-        <!--object id="fakeSessionDescription" classid="clsid:DBA9F8E2-F9FB-47CF-8797-986A69A1CA9C" style="visibility:hidden;"> </object-->
-        <!--object id="fakeNetTransport" classid="clsid:5A7D84EC-382C-4844-AB3A-9825DBE30DAE" style="visibility:hidden;"> </object-->
-        <!--object id="fakePeerConnection" classid="clsid:56D10AD3-8F52-4AA4-854B-41F4D6F9CEA3" style="visibility:hidden;"> </object-->
-        <object id="fakePluginInstance" classid="clsid:69E4A9D1-824C-40DA-9680-C7424A27B6A0" style="visibility:hidden;"> </object>
-
-        <!--
-            NPAPI  browsers: Safari, Opera and Firefox
-        -->
-        <!--embed id="WebRtc4npapi" type="application/w4a" width='1' height='1' style='visibility:hidden;' /-->
-    </footer>
 </div>
 <!-- /container -->
 <!-- Glass Panel -->
