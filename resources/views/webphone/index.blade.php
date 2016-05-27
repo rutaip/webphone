@@ -10,7 +10,7 @@
     <!-- Styles -->
     {!! Html::style('assets/css/bootstrap.css') !!}
     <style type="text/css">
-      /*  body {
+        body {
             padding-top: 80px;
             padding-bottom: 40px;
         }
@@ -30,7 +30,7 @@
         }
         .normal-screen {
             position: relative;
-        }*/
+        }
         .call-options {
             padding: 5px;
             background-color: #f0f0f0;
