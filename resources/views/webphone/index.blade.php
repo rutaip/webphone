@@ -987,43 +987,6 @@
 
 
 <div class="container">
-    <div class="row-fluid">
-
-        <div id="divCallCtrl" class="span7 well" style='display:table-cell; vertical-align:middle'>
-
-            <h2>
-                Call control
-            </h2>
-            <br />
-            <table style='width: 100%;'>
-                <tr>
-                    <td style="white-space:nowrap;">
-
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="1" align="right">
-
-                    </td>
-                </tr>
-                <tr>
-
-                </tr>
-                <tr>
-                    <td align='center'>
-                        <div id='divCallOptions' class='call-options' style='opacity: 0; margin-top: 0px'>
-                            <input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled onclick='toggleFullScreen();' /> &nbsp;
-                            <input type="button" class="btn" style="" id="btnMute" value="Mute" onclick='sipToggleMute();' /> &nbsp;
-                            <input type="button" class="btn" style="" id="btnHoldResume" value="Hold" onclick='sipToggleHoldResume();' /> &nbsp;
-                            <input type="button" class="btn" style="" id="btnTransfer" value="Transfer" onclick='sipTransfer();' /> &nbsp;
-                            <input type="button" class="btn" style="" id="btnKeyPad" value="KeyPad" onclick='openKeyPad();' />
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-md-6">
             <table class="table table-bordered">
@@ -1069,7 +1032,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6">
+        <div id="divCallCtrl" class="col-md-6">
             <table class="table table-bordered">
                 <caption>Call Control</caption>
                 <thead>
@@ -1102,43 +1065,50 @@
                             <div class="btn-group">
                                 <input type="button" id="btnHangUp" style="margin: 0; vertical-align:middle; height: 100%;" class="btn btn-primary" value="HangUp" onclick='sipHangUp();' disabled />
                             </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Call controls</th>
-                    <td id="tdVideo" class='tab-video'>
-                        <div id="divVideo" class='div-video'>
-                            <div id="divVideoRemote" style=' height:100%; width:100%; z-index: auto; opacity: 1'>
-                                <video class="video" width="100%" height="100%" id="video_remote" autoplay="autoplay" style="opacity: 0;
-                                            background-color: #000000; -webkit-transition-property: opacity; -webkit-transition-duration: 2s;"></video>
+                            <div id='divCallOptions' class='call-options' style='opacity: 0; margin-top: 0px'>
+                                <input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled onclick='toggleFullScreen();' /> &nbsp;
+                                <input type="button" class="btn" style="" id="btnMute" value="Mute" onclick='sipToggleMute();' /> &nbsp;
+                                <input type="button" class="btn" style="" id="btnHoldResume" value="Hold" onclick='sipToggleHoldResume();' /> &nbsp;
+                                <input type="button" class="btn" style="" id="btnTransfer" value="Transfer" onclick='sipTransfer();' /> &nbsp;
+                                <input type="button" class="btn" style="" id="btnKeyPad" value="KeyPad" onclick='openKeyPad();' />
                             </div>
-
-                            <div id="divVideoLocalWrapper" style="margin-left: 0px; border:0px solid #009; z-index: 1000">
-                                <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
-                                <div id="divVideoLocal" class="previewvideo" style=' border:0px solid #009; z-index: 1000'>
-                                    <video class="video" width="100%" height="100%" id="video_local" autoplay="autoplay" muted="true" style="opacity: 0;
-                                                background-color: #000000; -webkit-transition-property: opacity;
-                                                -webkit-transition-duration: 2s;"></video>
-                                </div>
-                            </div>
-                            <div id="divScreencastLocalWrapper" style="margin-left: 90px; border:0px solid #009; z-index: 1000">
-                                <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
-                                <div id="divScreencastLocal" class="previewvideo" style=' border:0px solid #009; z-index: 1000'>
-                                </div>
-                            </div>
-                            <!--div id="div1" style="margin-left: 300px; border:0px solid #009; z-index: 1000">
-                                <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
-                                <div id="div2" class="previewvideo" style='border:0px solid #009; z-index: 1000'>
-                                  <input type="button" class="btn" style="" id="Button1" value="Button1" /> &nbsp;
-                                  <input type="button" class="btn" style="" id="Button2" value="Button2" /> &nbsp;
-                                </div>
-                            </div-->
                         </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+                <div id="divVideo" class='div-video'>
+                    <div id="divVideoRemote" style=' height:100%; width:100%; z-index: auto; opacity: 1'>
+                        <video class="video" width="100%" height="100%" id="video_remote" autoplay="autoplay" style="opacity: 0;
+                                            background-color: #000000; -webkit-transition-property: opacity; -webkit-transition-duration: 2s;"></video>
+                    </div>
+
+                    <div id="divVideoLocalWrapper" style="margin-left: 0px; border:0px solid #009; z-index: 1000">
+                        <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
+                        <div id="divVideoLocal" class="previewvideo" style=' border:0px solid #009; z-index: 1000'>
+                            <video class="video" width="100%" height="100%" id="video_local" autoplay="autoplay" muted="true" style="opacity: 0;
+                                                background-color: #000000; -webkit-transition-property: opacity;
+                                                -webkit-transition-duration: 2s;"></video>
+                        </div>
+                    </div>
+                    <div id="divScreencastLocalWrapper" style="margin-left: 90px; border:0px solid #009; z-index: 1000">
+                        <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
+                        <div id="divScreencastLocal" class="previewvideo" style=' border:0px solid #009; z-index: 1000'>
+                        </div>
+                    </div>
+                    <!--div id="div1" style="margin-left: 300px; border:0px solid #009; z-index: 1000">
+                        <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
+                        <div id="div2" class="previewvideo" style='border:0px solid #009; z-index: 1000'>
+                          <input type="button" class="btn" style="" id="Button1" value="Button1" /> &nbsp;
+                          <input type="button" class="btn" style="" id="Button2" value="Button2" /> &nbsp;
+                        </div>
+                    </div-->
+                </div>
         </div>
     </div>
 
