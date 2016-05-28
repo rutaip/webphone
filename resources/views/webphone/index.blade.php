@@ -513,7 +513,7 @@
                 {
                     var bDisableCallBtnOptions = (window.localStorage && window.localStorage.getItem('org.doubango.expert.disable_callbtn_options') == "true");
                     btnCall.value = btnCall.innerHTML = bDisableCallBtnOptions ? 'Call' : 'Call <span id="spanCaret" class="caret">';
-                    btnCall.setAttribute("class", bDisableCallBtnOptions ? "btn btn-primary" : "btn btn-primary dropdown-toggle");
+                    btnCall.setAttribute("class", bDisableCallBtnOptions ? "btn btn-block btn-primary" : "btn btn-primary dropdown-toggle");
                     btnCall.onclick = bDisableCallBtnOptions ? function () { sipCall(bDisableVideo ? 'call-audio' : 'call-audiovideo'); } : null;
                     ulCallOptions.style.visibility = bDisableCallBtnOptions ? "hidden" : "visible";
                     if (!bDisableCallBtnOptions && ulCallOptions.parentNode != divBtnCallGroup) {
@@ -880,159 +880,207 @@
                 }
             }
         }
+
+
     </script>
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <table class="table table-bordered">
-                <caption>User Details</caption>
-                <thead>
-                <tr class="active">
-                    <th>Field</th>
-                    <th>Content</th>
-                </tr> </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">Extension Register Status</th>
-                    <td><label id="txtRegStatus"></label></td>
-                </tr>
-                <tr>
-                    <th scope="row">Name</th>
-                    <td>{{ $user->name }} {{ $user->lastname }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Extension</th>
-                    <td>{{ $extension->extension }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">PBX URL</th>
-                    <td>{{ $extension->pbx_url }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Email</th>
-                    <td>{{ $user->email }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Options</th>
-                    <input type="hidden" style="width: 100%; height: 100%" id="txtDisplayName" value="{{ $user->name }} {{ $user->lastname }}" placeholder="e.g. {{ $user->name }}" />
-                    <input type="hidden" style="width: 100%; height: 100%" id="txtPrivateIdentity" value="{{ $extension->extension }}" placeholder="e.g. +33600000000" />
-                    <input type="hidden" style="width: 100%; height: 100%" id="txtPublicIdentity" value="" placeholder="sip:{{ $extension->extension }}{!! '@' !!}{{ $extension->pbx_url }}" />
-                    <input type="hidden" style="width: 100%; height: 100%" id="txtPassword" value="{{ $extension->password }}" />
-                    <input type="hidden" style="width: 100%; height: 100%" id="txtRealm" value="{{ $extension->pbx_url }}" placeholder="e.g. doubango.org" />
-                    <td><input type="button" class="btn btn-success" id="btnRegister" value="LogIn" disabled onclick='sipRegister();' />
-                        &nbsp;
-                        <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" disabled onclick='sipUnRegister();' />
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="divCallCtrl" class="col-md-6">
-            <table class="table table-bordered">
-                <caption>Call Control</caption>
-                <thead>
-                <tr class="active">
-                    <th>Field</th>
-                    <th>Content</th>
-                </tr> </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">Call Status</th>
-                    <td><label id="txtCallStatus"></label></td>
-                </tr>
-
-                <tr>
-                    <th scope="row">Number to call</th>
-                    <td>
-                        {!! Form::text('txtPhoneNumber', null, ['class' => 'form-control', 'placeholder' => 'Enter phone number to call', 'id' => 'txtPhoneNumber']) !!}
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Options</th>
-                    <td>
-                        <div class="btn-toolbar" style="margin: 0; vertical-align:middle">
-                            <!--div class="btn-group">
-                                <input type="button" id="btnBFCP" style="margin: 0; vertical-align:middle; height: 100%;" class="btn btn-primary" value="BFCP" onclick='sipShareScreen();' disabled />
-                            </div-->
-                            <div id="divBtnCallGroup" class="btn-group">
-                                <button id="btnCall" disabled class="btn btn-primary" data-toggle="dropdown">Call</button>
-                            </div>&nbsp;&nbsp;
-                            <div class="btn-group">
-                                <input type="button" id="btnHangUp" style="margin: 0; vertical-align:middle; height: 100%;" class="btn btn-primary" value="HangUp" onclick='sipHangUp();' disabled />
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Call controls</th>
-                    <td>
-                        <div id='divCallOptions' class='call-options' style='opacity: 0; margin-top: 0px'>
-                            <input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled onclick='toggleFullScreen();' /> &nbsp;
-                            <input type="button" class="btn" style="" id="btnMute" value="Mute" onclick='sipToggleMute();' /> &nbsp;
-                            <input type="button" class="btn" style="" id="btnHoldResume" value="Hold" onclick='sipToggleHoldResume();' /> &nbsp;
-                            <input type="button" class="btn" style="" id="btnTransfer" value="Transfer" onclick='sipTransfer();' /> &nbsp;
-                            <input type="button" class="btn" style="" id="btnKeyPad" value="KeyPad" onclick='openKeyPad();' />
-                        </div>
-
-                    </td>
-
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3">
-            <table class="table table-bordered">
-                <caption>Keypad</caption>
-                <tbody>
-            <tr>
-                <td><input type="button" class="btn btn-block btn-default" value="1" onclick="sipSendDTMF('1');" /></td>
-                <td><input type="button" class="btn btn-block btn-default" value="2" onclick="sipSendDTMF('2');" /></td>
-                <td><input type="button" class="btn btn-block btn-default" value="3" onclick="sipSendDTMF('3');" /></td>
-            </tr>
-            <tr>
-                <td><input type="button" class="btn btn-block btn-default" value="4" onclick="sipSendDTMF('4');" /></td>
-                <td><input type="button" class="btn btn-block btn-default" value="5" onclick="sipSendDTMF('5');" /></td>
-                <td><input type="button" class="btn btn-block btn-default" value="6" onclick="sipSendDTMF('6');" /></td>
-            </tr>
-            <tr>
-                <td><input type="button" class="btn btn-block btn-default" value="7" onclick="sipSendDTMF('7');" /></td>
-                <td><input type="button" class="btn btn-block btn-default" value="8" onclick="sipSendDTMF('8');" /></td>
-                <td><input type="button" class="btn btn-block btn-default" value="9" onclick="sipSendDTMF('9');" /></td>
-            </tr>
-            <tr>
-                <td><input type="button" class="btn btn-block btn-default" value="*" onclick="sipSendDTMF('*');" /></td>
-                <td><input type="button" class="btn btn-block btn-default" value="0" onclick="sipSendDTMF('0');" /></td>
-                <td><input type="button" class="btn btn-block btn-default" value="#" onclick="sipSendDTMF('#');" /></td>
-            </tr>
-                </tbody>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <caption>User Details</caption>
+                    <thead>
+                    <tr class="active">
+                        <th>Field</th>
+                        <th>Content</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Extension Register Status</th>
+                        <td><label id="txtRegStatus"></label></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>{{ $user->name }} {{ $user->lastname }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Extension</th>
+                        <td>{{ $extension->extension }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">PBX URL</th>
+                        <td>{{ $extension->pbx_url }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{ $user->email }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Options</th>
+                        <input type="hidden" style="width: 100%; height: 100%" id="txtDisplayName"
+                               value="{{ $user->name }} {{ $user->lastname }}" placeholder="e.g. {{ $user->name }}"/>
+                        <input type="hidden" style="width: 100%; height: 100%" id="txtPrivateIdentity"
+                               value="{{ $extension->extension }}" placeholder="e.g. +33600000000"/>
+                        <input type="hidden" style="width: 100%; height: 100%" id="txtPublicIdentity" value=""
+                               placeholder="sip:{{ $extension->extension }}{!! '@' !!}{{ $extension->pbx_url }}"/>
+                        <input type="hidden" style="width: 100%; height: 100%" id="txtPassword"
+                               value="{{ $extension->password }}"/>
+                        <input type="hidden" style="width: 100%; height: 100%" id="txtRealm"
+                               value="{{ $extension->pbx_url }}" placeholder="e.g. doubango.org"/>
+                        <td><input type="button" class="btn btn-success" id="btnRegister" value="LogIn" disabled
+                                   onclick='sipRegister();'/>
+                            &nbsp;
+                            <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" disabled
+                                   onclick='sipUnRegister();'/>
+                        </td>
+                    </tr>
+                    </tbody>
                 </table>
+            </div>
+            <div id="divCallCtrl" class="col-md-6">
+                <table class="table table-bordered">
+                    <caption>Call Control</caption>
+                    <thead>
+                    <tr class="active">
+                        <th>Field</th>
+                        <th>Content</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Call Status</th>
+                        <td><label id="txtCallStatus"></label></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Number to call</th>
+                        <td>
+                            {!! Form::text('txtPhoneNumber', null, ['class' => 'form-control', 'placeholder' => 'Enter phone number to call', 'id' => 'txtPhoneNumber']) !!}
+                        </td>
+                    </tr>
+                    <tr><!-- Teclado -->
+                        <th scope="row">Keypad</th>
+                        <td>
+                            <div class="row" id="divKeyPad">
+                                <div class="col-md-12">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn1" value="1" onclick="sipSendDTMF('1'); AddDigit('1');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn2" value="2" onclick="sipSendDTMF('2'); AddDigit('2');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn3" value="3" onclick="sipSendDTMF('3'); AddDigit('3');"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn4" value="4" onclick="sipSendDTMF('4'); AddDigit('4');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn5" value="5" onclick="sipSendDTMF('5'); AddDigit('5');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn6" value="6" onclick="sipSendDTMF('6'); AddDigit('6');"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn7" value="7" onclick="sipSendDTMF('7'); AddDigit('7');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn8" value="8" onclick="sipSendDTMF('8'); AddDigit('8');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn9" value="9" onclick="sipSendDTMF('9'); AddDigit('9');"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn*" value="*" onclick="sipSendDTMF('*');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn0" value="0" onclick="sipSendDTMF('0'); AddDigit('0');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn#" value="#" onclick="sipSendDTMF('#');"/></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <script type="text/javascript">
+
+                                        Memory = "0";      // initialise memory variable
+                                        Current = "0";      //   and value of Display ("current" value)
+                                        Operation = 0;      // Records code for eg * / etc.
+                                        MAXLENGTH = 30;     // maximum number of digits before decimal!
+
+                                        function AddDigit(dig)          //ADD A DIGIT TO DISPLAY (kept as 'Current')
+                                        {
+                                            if (Current.length > MAXLENGTH) {
+                                                Current = "Aargh! Too long"; //limit length
+                                            } else {
+                                                if ((eval(Current) == 0)
+                                                        && (Current.indexOf(".") == -1)
+                                                ) {
+                                                    Current = dig;
+                                                } else {
+                                                    Current = Current + dig;
+                                                }
+                                                ;
+                                            }
+                                            ;
+                                            document.getElementById("txtPhoneNumber").value = Current;
+                                        }
+                                        ;
+
+
+                                    </script>
+                                </div>
+                            </div>
+                        </td>
+                    </tr><!-- Fin teclado -->
+                    <tr>
+                        <th scope="row">Options</th>
+                        <td>
+                            <div class="row col-md-12">
+                                <!--div class="btn-group">
+                                    <input type="button" id="btnBFCP" style="margin: 0; vertical-align:middle; height: 100%;" class="btn btn-primary" value="BFCP" onclick='sipShareScreen();' disabled />
+                                </div-->
+                                <div id="divBtnCallGroup" class="col-md-6">
+                                    <button id="btnCall" disabled class="btn btn-block btn-primary" data-toggle="dropdown">Call
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="button" id="btnHangUp" class="btn btn-block btn-primary" value="HangUp" onclick='sipHangUp();' disabled/>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Call controls</th>
+                        <td>
+                            <div id='divCallOptions' class='call-options' style='opacity: 0; margin-top: 0px'>
+                                <input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled
+                                       onclick='toggleFullScreen();'/> &nbsp;
+                                <input type="button" class="btn" style="" id="btnMute" value="Mute"
+                                       onclick='sipToggleMute();'/> &nbsp;
+                                <input type="button" class="btn" style="" id="btnHoldResume" value="Hold"
+                                       onclick='sipToggleHoldResume();'/> &nbsp;
+                                <input type="button" class="btn" style="" id="btnTransfer" value="Transfer"
+                                       onclick='sipTransfer();'/> &nbsp;
+                               <!-- <input type="button" class="btn" style="" id="btnKeyPad" value="KeyPad"
+                                       onclick='openKeyPad();'/>-->
+                            </div>
+
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-    </div>
-
-    <div class="row">
-        <div id="tdVideo" class="col-md-12">
+        <div class="row">
+            <div id="tdVideo" class="col-md-12" style='display:none'>
                 <div id="divVideo" class='div-video'>
                     <div id="divVideoRemote" style=' height:100%; width:100%; z-index: auto; opacity: 1'>
-                        <video class="video" width="100%" height="100%" id="video_remote" autoplay="autoplay" style="opacity: 0;
+                        <video class="video" width="10%" height="10%" id="video_remote" autoplay="autoplay" style="opacity: 0;
                                             background-color: #000000; -webkit-transition-property: opacity; -webkit-transition-duration: 2s;"></video>
                     </div>
 
                     <div id="divVideoLocalWrapper" style="margin-left: 0px; border:0px solid #009; z-index: 1000">
-                        <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
+                        <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"></iframe>
                         <div id="divVideoLocal" class="previewvideo" style=' border:0px solid #009; z-index: 1000'>
-                            <video class="video" width="100%" height="100%" id="video_local" autoplay="autoplay" muted="true" style="opacity: 0;
+                            <video class="video" width="10%" height="10%" id="video_local" autoplay="autoplay"
+                                   muted="true" style="opacity: 0;
                                                 background-color: #000000; -webkit-transition-property: opacity;
                                                 -webkit-transition-duration: 2s;"></video>
                         </div>
                     </div>
                     <div id="divScreencastLocalWrapper" style="margin-left: 90px; border:0px solid #009; z-index: 1000">
-                        <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"> </iframe>
+                        <iframe class="previewvideo" style="border:0px solid #009; z-index: 1000"></iframe>
                         <div id="divScreencastLocal" class="previewvideo" style=' border:0px solid #009; z-index: 1000'>
                         </div>
                     </div>
@@ -1044,36 +1092,56 @@
                         </div>
                     </div-->
                 </div>
+            </div>
         </div>
     </div>
-</div>
 
 
-<!-- /container -->
-<!-- Glass Panel -->
-<div id='divGlassPanel' class='glass-panel' style='visibility:hidden'></div>
-<!-- KeyPad Div -->
-<div id='divKeyPad' class='span2 well div-keypad' style="left:0px; top:0px; width:250; height:240; visibility:hidden">
-    <table style="width: 100%; height: 100%">
-        <tr><td><input type="button" style="width: 33%" class="btn" value="1" onclick="sipSendDTMF('1');" /><input type="button" style="width: 33%" class="btn" value="2" onclick="sipSendDTMF('2');" /><input type="button" style="width: 33%" class="btn" value="3" onclick="sipSendDTMF('3');" /></td></tr>
-        <tr><td><input type="button" style="width: 33%" class="btn" value="4" onclick="sipSendDTMF('4');" /><input type="button" style="width: 33%" class="btn" value="5" onclick="sipSendDTMF('5');" /><input type="button" style="width: 33%" class="btn" value="6" onclick="sipSendDTMF('6');" /></td></tr>
-        <tr><td><input type="button" style="width: 33%" class="btn" value="7" onclick="sipSendDTMF('7');" /><input type="button" style="width: 33%" class="btn" value="8" onclick="sipSendDTMF('8');" /><input type="button" style="width: 33%" class="btn" value="9" onclick="sipSendDTMF('9');" /></td></tr>
-        <tr><td><input type="button" style="width: 33%" class="btn" value="*" onclick="sipSendDTMF('*');" /><input type="button" style="width: 33%" class="btn" value="0" onclick="sipSendDTMF('0');" /><input type="button" style="width: 33%" class="btn" value="#" onclick="sipSendDTMF('#');" /></td></tr>
-        <tr><td colspan=3><input type="button" style="width: 100%" class="btn btn-medium btn-danger" value="close" onclick="closeKeyPad();" /></td></tr>
-    </table>
-</div>
-<!-- Call button options -->
-<ul id="ulCallOptions" class="dropdown-menu" style="visibility:hidden">
-    <li><a href="#" onclick='sipCall("call-audio");'>Audio</a></li>
-    <li><a href="#" onclick='sipCall("call-audiovideo");'>Video</a></li>
-    <li id='liScreenShare'><a href="#" onclick='sipShareScreen();'>Screen Share</a></li>
-    <li class="divider"></li>
-    <li><a href="#" onclick='uiDisableCallOptions();'><b>Disable these options</b></a></li>
-</ul>
+    <!-- /container -->
+    <!-- Glass Panel -->
+    <div id='divGlassPanel' class='glass-panel' style='visibility:hidden'></div>
+    <!-- KeyPad Div
+    <div id='divKeyPad' class='span2 well div-keypad'
+         style="left:0px; top:0px; width:250; height:240; visibility:hidden">
+        <table style="width: 100%; height: 100%">
+            <tr>
+                <td><input type="button" style="width: 33%" class="btn" value="1" onclick="sipSendDTMF('1');"/><input
+                            type="button" style="width: 33%" class="btn" value="2" onclick="sipSendDTMF('2');"/><input
+                            type="button" style="width: 33%" class="btn" value="3" onclick="sipSendDTMF('3');"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" style="width: 33%" class="btn" value="4" onclick="sipSendDTMF('4');"/><input
+                            type="button" style="width: 33%" class="btn" value="5" onclick="sipSendDTMF('5');"/><input
+                            type="button" style="width: 33%" class="btn" value="6" onclick="sipSendDTMF('6');"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" style="width: 33%" class="btn" value="7" onclick="sipSendDTMF('7');"/><input
+                            type="button" style="width: 33%" class="btn" value="8" onclick="sipSendDTMF('8');"/><input
+                            type="button" style="width: 33%" class="btn" value="9" onclick="sipSendDTMF('9');"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" style="width: 33%" class="btn" value="*" onclick="sipSendDTMF('*');"/><input
+                            type="button" style="width: 33%" class="btn" value="0" onclick="sipSendDTMF('0');"/><input
+                            type="button" style="width: 33%" class="btn" value="#" onclick="sipSendDTMF('#');"/></td>
+            </tr>
+            <tr>
+                <td colspan=3><input type="button" style="width: 100%" class="btn btn-medium btn-danger" value="close"
+                                     onclick="closeKeyPad();"/></td>
+            </tr>
+        </table>
+    </div>-->
+    <!-- Call button options -->
+    <ul id="ulCallOptions" class="dropdown-menu" style="visibility:hidden">
+        <li><a href="#" onclick='sipCall("call-audio");'>Audio</a></li>
+        <li><a href="#" onclick='sipCall("call-audiovideo");'>Video</a></li>
+        <li id='liScreenShare'><a href="#" onclick='sipShareScreen();'>Screen Share</a></li>
+        <li class="divider"></li>
+        <li><a href="#" onclick='uiDisableCallOptions();'><b>Disable these options</b></a></li>
+    </ul>
 
-<!-- Audios -->
-<audio id="audio_remote" autoplay="autoplay"> </audio>
-<audio id="ringtone" loop src="../../assets/sounds/ringtone.wav"> </audio>
-<audio id="ringbacktone" loop src="../../assets/sounds/ringbacktone.wav"> </audio>
-<audio id="dtmfTone" src="../../assets/sounds/dtmf.wav"> </audio>
+    <!-- Audios -->
+    <audio id="audio_remote" autoplay="autoplay"></audio>
+    <audio id="ringtone" loop src="../../assets/sounds/ringtone.wav"></audio>
+    <audio id="ringbacktone" loop src="../../assets/sounds/ringbacktone.wav"></audio>
+    <audio id="dtmfTone" src="../../assets/sounds/dtmf.wav"></audio>
 @stop
