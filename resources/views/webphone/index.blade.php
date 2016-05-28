@@ -985,6 +985,37 @@
     </div>
 
     <div class="row">
+        <div class="col-md-3">
+            <table class="table table-bordered">
+                <caption>Keypad</caption>
+                <tbody>
+            <tr>
+                <td><input type="button" class="btn btn-block btn-default" value="1" onclick="sipSendDTMF('1');" /></td>
+                <td><input type="button" class="btn btn-block btn-default" value="2" onclick="sipSendDTMF('2');" /></td>
+                <td><input type="button" class="btn btn-block btn-default" value="3" onclick="sipSendDTMF('3');" /></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn btn-block btn-default" value="4" onclick="sipSendDTMF('4');" /></td>
+                <td><input type="button" class="btn btn-block btn-default" value="5" onclick="sipSendDTMF('5');" /></td>
+                <td><input type="button" class="btn btn-block btn-default" value="6" onclick="sipSendDTMF('6');" /></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn btn-block btn-default" value="7" onclick="sipSendDTMF('7');" /></td>
+                <td><input type="button" class="btn btn-block btn-default" value="8" onclick="sipSendDTMF('8');" /></td>
+                <td><input type="button" class="btn btn-block btn-default" value="9" onclick="sipSendDTMF('9');" /></td>
+            </tr>
+            <tr>
+                <td><input type="button" class="btn btn-block btn-default" value="*" onclick="sipSendDTMF('*');" /></td>
+                <td><input type="button" class="btn btn-block btn-default" value="0" onclick="sipSendDTMF('0');" /></td>
+                <td><input type="button" class="btn btn-block btn-default" value="#" onclick="sipSendDTMF('#');" /></td>
+            </tr>
+                </tbody>
+                </table>
+        </div>
+
+    </div>
+
+    <div class="row">
         <div id="tdVideo" class="col-md-12">
                 <div id="divVideo" class='div-video'>
                     <div id="divVideoRemote" style=' height:100%; width:100%; z-index: auto; opacity: 1'>
@@ -1016,6 +1047,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- /container -->
 <!-- Glass Panel -->
 <div id='divGlassPanel' class='glass-panel' style='visibility:hidden'></div>
