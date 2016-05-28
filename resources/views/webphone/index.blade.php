@@ -1057,17 +1057,19 @@
                         <th scope="row">Call controls</th>
                         <td>
                             <div id='divCallOptions' class='call-options row' style='opacity: 0; margin-top: 0px'>
-                                <!--<input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled
-                                       onclick='toggleFullScreen();'/> &nbsp;-->
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                <input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled
+                                       onclick='toggleFullScreen();'/>
+                                </div>
+                                <div class="col-md-3">
                                 <input type="button" class="btn btn-block" style="" id="btnMute" value="Mute"
                                        onclick='sipToggleMute();'/>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                 <input type="button" class="btn btn-block" style="" id="btnHoldResume" value="Hold"
                                        onclick='sipToggleHoldResume();'/>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                 <input type="button" class="btn btn-block" style="" id="btnTransfer" value="Transfer"
                                        onclick='sipTransfer();'/>
                                 </div>
