@@ -929,11 +929,17 @@
                                value="{{ $extension->password }}"/>
                         <input type="hidden" style="width: 100%; height: 100%" id="txtRealm"
                                value="{{ $extension->pbx_url }}" placeholder="e.g. doubango.org"/>
-                        <td><input type="button" class="btn btn-success" id="btnRegister" value="LogIn" disabled
-                                   onclick='sipRegister();'/>
-                            &nbsp;
-                            <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" disabled
-                                   onclick='sipUnRegister();'/>
+                        <td>
+                            <div class="row">
+                                <div class="col-md-6">
+                                <input type="button" class="btn btn-block btn-success" id="btnRegister" value="Register" disabled
+                                       onclick='sipRegister();'/>
+                                </div>
+                                <div class="col-md-6">
+                                <input type="button" class="btn btn-block btn-danger" id="btnUnRegister" value="Unregister" disabled
+                                       onclick='sipUnRegister();'/>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
@@ -957,7 +963,14 @@
                     <tr>
                         <th scope="row">Number to call</th>
                         <td>
-                            {!! Form::text('txtPhoneNumber', null, ['class' => 'form-control', 'placeholder' => 'Enter phone number to call', 'id' => 'txtPhoneNumber']) !!}
+                            <div class="row">
+                                <div class="col-md-8">
+                                    {!! Form::text('txtPhoneNumber', null, ['class' => 'form-control', 'placeholder' => 'Enter phone number to call', 'id' => 'txtPhoneNumber']) !!}
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="button" class="btn btn-block btn-default" id="btndel" value="Clean" onclick="DelDigit();"/>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     <tr><!-- Teclado -->
@@ -1007,13 +1020,15 @@
                                                     Current = dig;
                                                 } else {
                                                     Current = Current + dig;
-                                                }
-                                                ;
-                                            }
-                                            ;
+                                                };
+                                            };
                                             document.getElementById("txtPhoneNumber").value = Current;
-                                        }
-                                        ;
+                                        };
+
+                                        function DelDigit()
+                                        {
+                                            document.getElementById("txtPhoneNumber").value = null;
+                                        };
 
 
                                     </script>
@@ -1024,7 +1039,7 @@
                     <tr>
                         <th scope="row">Options</th>
                         <td>
-                            <div class="row col-md-12">
+                            <div class="row">
                                 <!--div class="btn-group">
                                     <input type="button" id="btnBFCP" style="margin: 0; vertical-align:middle; height: 100%;" class="btn btn-primary" value="BFCP" onclick='sipShareScreen();' disabled />
                                 </div-->
@@ -1041,15 +1056,21 @@
                     <tr>
                         <th scope="row">Call controls</th>
                         <td>
-                            <div id='divCallOptions' class='call-options' style='opacity: 0; margin-top: 0px'>
-                                <input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled
-                                       onclick='toggleFullScreen();'/> &nbsp;
-                                <input type="button" class="btn" style="" id="btnMute" value="Mute"
-                                       onclick='sipToggleMute();'/> &nbsp;
-                                <input type="button" class="btn" style="" id="btnHoldResume" value="Hold"
-                                       onclick='sipToggleHoldResume();'/> &nbsp;
-                                <input type="button" class="btn" style="" id="btnTransfer" value="Transfer"
-                                       onclick='sipTransfer();'/> &nbsp;
+                            <div id='divCallOptions' class='call-options row' style='opacity: 0; margin-top: 0px'>
+                                <!--<input type="button" class="btn" style="" id="btnFullScreen" value="FullScreen" disabled
+                                       onclick='toggleFullScreen();'/> &nbsp;-->
+                                <div class="col-md-4">
+                                <input type="button" class="btn btn-block" style="" id="btnMute" value="Mute"
+                                       onclick='sipToggleMute();'/>
+                                </div>
+                                <div class="col-md-4">
+                                <input type="button" class="btn btn-block" style="" id="btnHoldResume" value="Hold"
+                                       onclick='sipToggleHoldResume();'/>
+                                </div>
+                                <div class="col-md-4">
+                                <input type="button" class="btn btn-block" style="" id="btnTransfer" value="Transfer"
+                                       onclick='sipTransfer();'/>
+                                </div>
                                <!-- <input type="button" class="btn" style="" id="btnKeyPad" value="KeyPad"
                                        onclick='openKeyPad();'/>-->
                             </div>
