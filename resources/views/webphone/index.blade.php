@@ -1011,8 +1011,7 @@
 
                                         function AddDigit(dig)          //ADD A DIGIT TO DISPLAY (kept as 'Current')
                                         {
-                                                try { dtmfTone.play(); } catch (e) { }
-
+                                                try { dtmfTone.play(); } catch (e) { } //playtones on keypad
                                             if (Current.length > MAXLENGTH) {
                                                 Current = "Incorrect length"; //limit length
                                             } else {
