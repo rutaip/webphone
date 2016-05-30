@@ -527,7 +527,7 @@
                 default:
                 {
                     btnCall.value = btnCall.innerHTML = s_text;
-                    btnCall.setAttribute("class", "btn btn-primary");
+                    btnCall.setAttribute("class", "btn btn-block btn-primary");
                     btnCall.onclick = function () { sipCall(bDisableVideo ? 'call-audio' : 'call-audiovideo'); };
                     ulCallOptions.style.visibility = "hidden";
                     if (ulCallOptions.parentNode == divBtnCallGroup) {
