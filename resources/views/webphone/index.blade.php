@@ -881,6 +881,32 @@
             }
         }
 
+        Memory = "0";      // initialise memory variable
+        Current = "";      //   and value of Display ("current" value)
+        Operation = 0;      // Records code for eg * / etc.
+        MAXLENGTH = 30;     // maximum number of digits before decimal!
+
+        function AddDigit(dig)          //ADD A DIGIT TO DISPLAY (kept as 'Current')
+        {
+            try { dtmfTone.play(); } catch (e) { } //playtones on keypad
+            if (Current.length > MAXLENGTH) {
+                Current = "Incorrect length"; //limit length
+            } else {
+
+                Current = Current + dig;
+
+            };
+            document.getElementById("txtPhoneNumber").value = Current;
+        };
+
+        function DelDigit()
+        {
+            Memory = "0";      // initialise memory variable
+            Current = "";      //   and value of Display ("current" value)
+            Operation = 0;      // Records code for eg * / etc.
+            MAXLENGTH = 30;
+            document.getElementById("txtPhoneNumber").value = null;
+        };
 
     </script>
 
@@ -1002,37 +1028,6 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <script type="text/javascript">
-
-                                        Memory = "0";      // initialise memory variable
-                                        Current = "";      //   and value of Display ("current" value)
-                                        Operation = 0;      // Records code for eg * / etc.
-                                        MAXLENGTH = 30;     // maximum number of digits before decimal!
-
-                                        function AddDigit(dig)          //ADD A DIGIT TO DISPLAY (kept as 'Current')
-                                        {
-                                                try { dtmfTone.play(); } catch (e) { } //playtones on keypad
-                                            if (Current.length > MAXLENGTH) {
-                                                Current = "Incorrect length"; //limit length
-                                            } else {
-
-                                                    Current = Current + dig;
-
-                                            };
-                                            document.getElementById("txtPhoneNumber").value = Current;
-                                        };
-
-                                        function DelDigit()
-                                        {
-                                            Memory = "0";      // initialise memory variable
-                                            Current = "";      //   and value of Display ("current" value)
-                                            Operation = 0;      // Records code for eg * / etc.
-                                            MAXLENGTH = 30;
-                                            document.getElementById("txtPhoneNumber").value = null;
-                                        };
-
-
-                                    </script>
                                 </div>
                             </div>
                         </td>
