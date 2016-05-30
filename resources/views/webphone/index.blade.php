@@ -1011,6 +1011,8 @@
 
                                         function AddDigit(dig)          //ADD A DIGIT TO DISPLAY (kept as 'Current')
                                         {
+                                                try { dtmfTone.play(); } catch (e) { }
+
                                             if (Current.length > MAXLENGTH) {
                                                 Current = "Incorrect length"; //limit length
                                             } else {
