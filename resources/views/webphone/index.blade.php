@@ -1022,9 +1022,9 @@
                                             <td><input type="button" class="btn btn-block btn-default" id="btn9" value="9" onclick="sipSendDTMF('9'); AddDigit('9');"/></td>
                                         </tr>
                                         <tr>
-                                            <td><input type="button" class="btn btn-block btn-default" id="btn*" value="*" onclick="sipSendDTMF('*');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn*" value="*" onclick="sipSendDTMF('*'); AddDigit('*');"/></td>
                                             <td><input type="button" class="btn btn-block btn-default" id="btn0" value="0" onclick="sipSendDTMF('0'); AddDigit('0');"/></td>
-                                            <td><input type="button" class="btn btn-block btn-default" id="btn#" value="#" onclick="sipSendDTMF('#');"/></td>
+                                            <td><input type="button" class="btn btn-block btn-default" id="btn#" value="#" onclick="sipSendDTMF('#'); AddDigit('#');"/></td>
                                         </tr>
                                         </tbody>
                                     </table>
